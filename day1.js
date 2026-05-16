@@ -1,1 +1,1 @@
-console.log("Day 1"); 
+console.log("day1 task")
