@@ -6,7 +6,7 @@
 const collegeName = "JNTUA Engineering College";
 
 let studentName = "Sameera";
-let studentDepartment = "EEE";
+let studentDepartment = "Computer Science";
 
 var studentRollNo = 1024;
 
@@ -68,9 +68,9 @@ function greetStudent(name) {
 
 greetStudent(studentName);
 
-// Updating variable value
 
 
 // Printing object
 console.log("\n========== OBJECT DATA ==========");
 console.log(studentDetails);
+
