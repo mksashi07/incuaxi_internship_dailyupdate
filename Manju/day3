@@ -132,7 +132,7 @@ function multiply() {
   return num1 * num2;
 }
 
-console.log(multiply()); // 60
+console.log(multiply()); 
 
 // A nested function example
 function getScore() {
@@ -159,7 +159,7 @@ const a2 = a.map(function (s) {
   return s.length;
 });
 
-console.log(a2); // [8, 6, 7, 9]
+console.log(a2); 
 
 const a3 = a.map((s) => s.length);
 
