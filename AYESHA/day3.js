@@ -1,0 +1,149 @@
+//while loop
+while (x < 10) {
+  x++;
+}
+const b = new Boolean(false);
+if (b) {
+  // this condition evaluates to true
+}
+if (b == true) {
+  // this condition evaluates to false
+}
+//if
+const b = new Boolean(false);
+if (b) {
+  // this condition evaluates to true
+}
+if (b == true) {
+  // this condition evaluates to false
+}
+//switch
+switch (fruitType) {
+  case "Oranges":
+    console.log("Oranges are $0.59 a pound.");
+    break;
+  case "Apples":
+    console.log("Apples are $0.32 a pound.");
+    break;
+  case "Bananas":
+    console.log("Bananas are $0.48 a pound.");
+    break;
+  case "Cherries":
+    console.log("Cherries are $3.00 a pound.");
+    break;
+  case "Mangoes":
+    console.log("Mangoes are $0.56 a pound.");
+    break;
+  case "Papayas":
+    console.log("Papayas are $2.79 a pound.");
+    break;
+  default:
+    console.log(`Sorry, we are out of ${fruitType}.`);
+}
+//throw 
+console.log("Is there anything else you'd like?");
+throw "Error2"; // String type
+throw 42; // Number type
+throw true; // Boolean type
+throw {
+  toString() {
+    return "I'm an object!";
+  },
+};
+//loops
+//for loop
+for (let step = 0; step < 5; step++) {
+
+  console.log("Walking east one step");
+}
+//let i = 0;
+do {
+  i += 1;
+  console.log(i);
+} while (i < 5);
+let i = 0;
+let n = 0;
+while (i < 5) {
+  i++;
+  if (i === 3) {
+    continue;
+  }
+  n += i;
+  console.log(n);
+}
+function myFunc(theArr) {
+  theArr[0] = 30;
+}
+
+const arr = [45];
+
+console.log(arr[0]); 
+myFunc(arr);
+console.log(arr[0]); 
+function addSquares(a, b) {
+  function square(x) {
+    return x * x;
+  }
+  return square(a) + square(b);
+}
+const factorial = function fac(n) {
+  return n < 2 ? 1 : n * fac(n - 1);
+};
+
+console.log(factorial(3)); 
+let myFunc;
+if (num === 0) {
+  myFunc = function (theObject) {
+    theObject.make = "Toyota";
+  };
+}
+// The following variables are defined in the global scope
+const num1 = 20;
+const num2 = 3;
+const name = "Chamakh";
+
+// This function is defined in the global scope
+function multiply() {
+  return num1 * num2;
+}
+
+console.log(multiply()); // 60
+
+// A nested function example
+function getScore() {
+  const num1 = 2;
+  const num2 = 3;
+
+  function add() {
+    return `${name} scored ${num1 + num2}`;
+  }
+
+  return add();
+}
+
+console.log(getScore());
+function multiply(a, b) {
+  b = typeof b !== "undefined" ? b : 1;
+  return a * b;
+}
+
+console.log(multiply(5)); 
+const a = ["Hydrogen", "Helium", "Lithium", "Beryllium"];
+
+const a2 = a.map(function (s) {
+  return s.length;
+});
+
+console.log(a2); // [8, 6, 7, 9]
+
+const a3 = a.map((s) => s.length);
+
+console.log(a3); 
+const b1 = 123n;
+const b2 = -1234567890987654321n;
+
+function formatNumber(num) {
+  return num.toFixed(2);
+}
+
+formatNumber(2);
