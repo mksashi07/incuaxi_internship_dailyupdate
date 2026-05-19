@@ -228,4 +228,3 @@ function addNumbers(num1, num2) {
 let total = addNumbers(10, 20);
 
 console.log("Total:", total);
-
