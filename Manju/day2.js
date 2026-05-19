@@ -113,3 +113,4 @@ console.log("Age:", userAge);
 let age=prompt("enter your age");
 age=Number(age);
 console.log(age ,typeof age);
+
