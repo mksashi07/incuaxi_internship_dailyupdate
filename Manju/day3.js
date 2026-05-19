@@ -1,5 +1,3 @@
-//day 3
-
 // 6. CONDITIONAL STATEMENTS
 // if statement
 let number = 10;    
@@ -174,5 +172,3 @@ function formatNumber(num) {
 }
 
 formatNumber(2);
-
-
