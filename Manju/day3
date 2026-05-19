@@ -1,4 +1,4 @@
-// 6. CONDITIONAL STATEMENTS
+6. CONDITIONAL STATEMENTS
 // if statement
 let number = 10;    
 if (number > 0) {
@@ -63,7 +63,7 @@ switch (fruitType) {
     console.log("Papayas are $2.79 a pound.");
     break;
   default:
-    console.log(`Sorry, we are out of ${fruitType}.`);
+    console.log(Sorry, we are out of ${fruitType}.);
 }
 //throw 
 console.log("Is there anything else you'd like?");
@@ -140,7 +140,7 @@ function getScore() {
   const num2 = 3;
 
   function add() {
-    return `${name} scored ${num1 + num2}`;
+    return ${name} scored ${num1 + num2};
   }
 
   return add();
