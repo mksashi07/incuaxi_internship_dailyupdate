@@ -1,10 +1,13 @@
 //Simple function
+
 function greet() {
   console.log("my name is mounika");
 }
 
 greet();
+
 //Function with return value
+
 function multiply(a, b) {
     return a * b;
 }
@@ -12,6 +15,7 @@ let result = multiply(5, 4);
 console.log(result);
 
 //Function with parameters
+
 function greet(name) {
   console.log("Hello " + name);
 }
@@ -19,6 +23,7 @@ function greet(name) {
 greet("Mounika");
 
 //Arrow function
+
 const multiply = (a, b) => {
   return a * b;
 };
@@ -26,6 +31,7 @@ const multiply = (a, b) => {
 console.log(multiply(5, 4));
 
 //Callback Function
+
 function greet(name, callback) {
   console.log("Hello " + name);
   callback();
@@ -36,7 +42,9 @@ function done() {
 }
 
 greet("John", done);
+
 //Student details Function
+
 function studentDetails(name, age, course, marks) {
 
     console.log("Student Information");
