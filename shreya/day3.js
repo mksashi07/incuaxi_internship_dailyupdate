@@ -109,7 +109,7 @@ console.log(cars[0]);
 console.log(cars[1]);
 console.log(cars[2]);
 //buit-in length
-colors = ["black", "orange", "pink"]
+colors = ["black", "orange", "pink"];
 booleans = [true, false, false, true];
 emptyArray = [];
 console.log("Length of colors:", colors.length);
