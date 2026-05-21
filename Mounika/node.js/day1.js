@@ -42,3 +42,4 @@ fs.readFile("note2.txt", "utf-8", (err, data) => {
         console.log(data);
     }
 });
+
