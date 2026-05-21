@@ -42,4 +42,4 @@ import { name, greet } from './app.js';
 
 console.log(name);
 
-greet();
+greet(); 
