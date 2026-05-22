@@ -1,5 +1,1 @@
 console.log("i am manju sravya")
-
-
-
-
