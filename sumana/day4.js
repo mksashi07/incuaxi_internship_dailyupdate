@@ -185,7 +185,7 @@ let arr2 = [3, 4];
 let combined = [...arr1, ...arr2];
 
 console.log("Combined Array:", combined);
-// Array Destructuring
+
 
 let colors = ["Red", "Blue", "Green"];
 
@@ -193,7 +193,9 @@ let [firstColor, secondColor] = colors;
 
 console.log("First Color:", firstColor);
 console.log("Second Color:", secondColor);
+
 // Method Chaining
+
 let result = numbers
     .filter(num => num > 10)
     .map(num => num * 2)
