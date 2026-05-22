@@ -169,3 +169,71 @@ const car = {
 for (let key in car) {
     console.log(`${key}: ${car[key]}`);
 }
+//iterative over a string
+let text = "Hello";
+
+for (let char of text) {
+    console.log(char);
+}
+//iterating over a array
+let numbers = [10, 20, 30];
+
+for (let num of numbers) {
+    console.log(num);
+}
+//iterate over a set
+let fruits = new Set(["Apple", "Banana", "Mango"]);
+
+for (let fruit of fruits) {
+    console.log(fruit);
+}
+//iterating over a map
+let student = new Map();
+
+student.set("name", "Shreya");
+student.set("age", 20);
+
+for (let [key, value] of student) {
+    console.log(key, ":", value);
+}
+//iterator.from
+let arr = [10, 20, 30];
+let iterator = Iterator.from(arr);
+console.log(iterator.next());
+console.log(iterator.next());
+//drop()method
+let nums = Iterator.from([1, 2, 3, 4, 5]);
+let result = nums.drop(2);
+console.log([...result]);
+//every()method
+let numbers = [2, 4, 6];
+let result = numbers.every(num => num % 2 === 0);
+console.log(result);
+//filter() method
+let nums = [1, 2, 3, 4, 5];
+let even = nums.filter(num => num % 2 === 0);
+console.log(even);
+//find()
+let nums = [5, 10, 15];
+let result = nums.find(num => num > 8);
+console.log(result);
+//flatmap()
+let nums = [1, 2, 3];
+let result = nums.flatMap(num => [num, num * 2]);
+console.log(result);
+//some()
+let nums = [1, 3, 5, 8];
+let result = nums.some(num => num % 2 === 0);
+console.log(result);
+//reduce()
+let nums = [1, 2, 3, 4];
+let sum = nums.reduce((total, num) => total + num, 0);
+console.log(sum);
+//map()
+let nums = [1, 2, 3];
+let doubled = nums.map(num => num * 2);
+console.log(doubled);
+//take()
+let nums = Iterator.from([10, 20, 30, 40]);
+let result = nums.take(2);
+console.log([...result]);
