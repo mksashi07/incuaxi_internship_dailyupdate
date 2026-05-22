@@ -22,7 +22,7 @@ class House {
 }
 let House1  = new House("Chandrakala", "Black");
 House1.details();
-//Constructor - it is a method to used toinitialize object values automatically when an object is created.
+//Constructor - it is a method to used to initialize object values automatically when an object is created.
 class StudentMarks {
     constructor(name, marks) {
         this.name = name;
