@@ -1,0 +1,68 @@
+// DOM 
+//Document Object Mode 
+
+// Select elements
+const heading = document.getElementById("title");
+const paragraph = document.getElementsByClassName("text")[0];
+const button = document.querySelector("#btn");
+
+// Change content
+heading.innerHTML = "DOM and BOM Example";
+
+// Change style
+paragraph.style.color = "blue";
+paragraph.style.fontSize = "20px";
+
+// Create new element
+const newElement = document.createElement("p");
+newElement.innerText = "New paragraph added using DOM.";
+
+// Add element to body
+document.body.appendChild(newElement);
+
+// Event handling
+button.addEventListener("click", function () {
+    alert("Button Clicked!");
+});
+
+
+//  BOM 
+//Browser Object Model
+
+// window object
+console.log("Window Width:", window.innerWidth);
+console.log("Window Height:", window.innerHeight);
+
+// navigator object
+console.log("Browser Name:", navigator.appName);
+console.log("Platform:", navigator.platform);
+
+// location object
+console.log("Current URL:", location.href);
+
+// history object
+console.log("History Length:", history.length);
+
+// screen object
+console.log("Screen Width:", screen.width);
+console.log("Screen Height:", screen.height);
+
+
+//Timer using BOM 
+
+// setTimeout
+setTimeout(() => {
+    console.log("This message appears after 2 seconds");
+}, 2000);
+
+// setInterval
+let count = 0;
+
+const timer = setInterval(() => {
+    count++;
+    console.log("Counter:", count);
+
+    if (count === 5) {
+        clearInterval(timer);
+    }
+}, 1000);
