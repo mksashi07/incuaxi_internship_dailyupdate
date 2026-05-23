@@ -124,13 +124,5 @@ async function fetchData() {
 fetchData();
 //Error Handling
 
-async function test() {
-    try {
-        let result = await Promise.reject("Error occurred");
-        console.log(result);
-    } catch (err) {
-        console.log(err);
-    }
-}
-test();
+
 
