@@ -46,7 +46,7 @@ readFile();
 const fs = require('fs');
 const express = require('express');
 const app = express();
-console.log("===== NODE.JS ERROR HANDLING =====");
+console.log("NODE.JS ERROR HANDLING ");
 // try...catch
 
 try {
