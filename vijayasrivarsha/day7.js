@@ -117,15 +117,11 @@ function getData() {
         setTimeout(() => resolve("Async/Await data"), 1000);
     });
 }
-
 async function fetchData() {
     let result = await getData();
     console.log(result);
 }
-
 fetchData();
-
-
 //Error Handling
 
 async function test() {
@@ -136,6 +132,5 @@ async function test() {
         console.log(err);
     }
 }
-
 test();
 
