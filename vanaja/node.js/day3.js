@@ -45,50 +45,23 @@ readFile();
 //Error Handling
 const fs = require('fs');
 const express = require('express');
-
 const app = express();
-
 console.log("===== NODE.JS ERROR HANDLING =====");
-
-/*
------------------------------------
-1. try...catch
------------------------------------
-*/
+// try...catch
 
 try {
-
     let result = 10 / 2;
-
     console.log("Division Result:", result);
-
 }catch(error){
-
     console.log("Error:", error.message);
-
 }
-
-/*
------------------------------------
-2. Reference Error
------------------------------------
-*/
-
+//Reference Error
 try {
-
     console.log(data);
-
 }catch(error){
-
     console.log("Reference Error:", error.message);
-
 }
-
-/*
------------------------------------
-3. Custom Error using throw
------------------------------------
-*/
+// Custom Error using throw
 
 try {
 
@@ -97,95 +70,43 @@ try {
     if(age < 18){
         throw new Error("Age must be 18+");
     }
-
     console.log("Eligible");
-
 }catch(error){
-
     console.log("Custom Error:", error.message);
-
 }
-
-/*
------------------------------------
-4. finally Block
------------------------------------
-*/
+// finally Block
 
 try {
-
     console.log("Inside Try Block");
-
 }catch(error){
-
     console.log(error.message);
-
 }finally{
-
     console.log("Finally Block Executed");
-
 }
-
-/*
------------------------------------
-5. File Handling Error
------------------------------------
-*/
-
+// File Handling Error
 try {
-
     const data = fs.readFileSync('test.txt', 'utf8');
-
     console.log(data);
-
 }catch(error){
-
     console.log("File Error:", error.message);
-
 }
-
-/*
------------------------------------
-6. JSON Parsing Error
------------------------------------
-*/
-
+// JSON Parsing Error
 try {
-
     const user = JSON.parse('{name:"Vishnu"}');
-
     console.log(user);
-
 }catch(error){
-
     console.log("JSON Error:", error.message);
-
-}
-
-/*
------------------------------------
-7. Callback Error Handling
------------------------------------
-*/
+// Callback Error Handling
 
 fs.readFile('demo.txt', 'utf8', (err, data) => {
-
     if(err){
-
         console.log("Callback Error:", err.message);
-
         return;
     }
-
     console.log(data);
-
 });
+// Promise Error Handling
 
-/*
------------------------------------
-8. Promise Error Handling
------------------------------------
-*/
 
 const promise = new Promise((resolve, reject) => {
 
