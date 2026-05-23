@@ -17,7 +17,7 @@ console.log(Math.max(0, 150, 30, -20));
 let randomNum = Math.floor(Math.random() * 10) + 1;
 console.log(randomNum); 
 
-// Create date objectss
+// Create date objects
 const now = new Date();                 
 const specificDate = new Date(2026, 4, 23); 
 
