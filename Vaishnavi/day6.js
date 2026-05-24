@@ -90,12 +90,6 @@ console.log(items);
 let students = new Set(["Rupa", "Sourya", "Jahnavi"]);
 console.log(students.size);
 
-//Looping Through a Set
-let cities = new Set(["Kurnool", "Kollapur", "Ananthapur"]);
-for(let city of cities) {
-    console.log(city);
-}
-
 //Converting Array to Set - Used to remove duplicate values from an array.
 let numbers = [1, 2, 2, 3, 4, 4, 5];
 let uniqueNumbers = new Set(numbers);
