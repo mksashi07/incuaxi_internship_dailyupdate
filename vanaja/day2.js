@@ -97,11 +97,11 @@ console.log(isStudent || hasID);
 console.log(!isStudent);         
 
 //string operations
-let firstName = "Vishnu";
-let lastName = "Srii";
+let firstN = "Vishnu";
+let lastN = "Srii";
 
-let fullName = firstName + " " + lastName;
-console.log(fullName); 
+let full = firstN + " " + lastN;
+console.log(full); 
 
 //user input
 let userName = prompt("Enter your name:");
@@ -114,3 +114,16 @@ console.log("Age:", userAge);
 let years=prompt("enter your age");
 age=Number(age);
 console.log(age ,typeof years);
+
+// String Concatenation
+let first = "Vishnu";
+let second = "Srii";
+
+console.log(first + " " + second);
+
+// TEMPLATE LITERALS
+let userN = "vishnu";
+let userA = 20;
+
+console.log(`My name is ${userN} and age is ${userA}`);
+
