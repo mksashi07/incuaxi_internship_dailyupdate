@@ -1,10 +1,11 @@
-/Math Methods
+
+//Math Methods
 //1. Math.round()-Rounds a number to the nearest integer.
 console.log(Math.round(4.6));
 console.log(Math.round(4.4));
 //2. Math.floor() - Rounds down to the nearest value
 console.log(Math.floor(4.9));
-//3. Math.ceil() - Rounds upto nearest integer
+//3. Math.ceil() - Rounds upto nearest ;
 console.log(Math.ceil(4.1));
 //4. Math.trunc() - Removes decimal point
 console.log(Math.trunc(8.99));
@@ -89,13 +90,11 @@ console.log(items);
 //The size property returns the number of elements in a set.
 let students = new Set(["Rupa", "Sourya", "Jahnavi"]);
 console.log(students.size);
-
 //Looping Through a Set
 let cities = new Set(["Kurnool", "Kollapur", "Ananthapur"]);
 for(let city of cities) {
     console.log(city);
 }
-
 //Converting Array to Set - Used to remove duplicate values from an array.
 let numbers = [1, 2, 2, 3, 4, 4, 5];
 let uniqueNumbers = new Set(numbers);
@@ -131,3 +130,5 @@ for(let student of students) {
 
 // Size
 console.log("Total Students:", students.size);
+console.log("Total Students:", students.size);
+
