@@ -67,23 +67,17 @@ const buffer = Buffer.from("Hello Node.js");
 console.log(buffer);
 console.log(buffer.toString());
 // Buffer Example in Node.js
-
 // Create Buffer
 const buf1 = Buffer.from("Hello");
 const buf2 = Buffer.from(" Node.js");
-
 // Concatenate
 const combined = Buffer.concat([buf1, buf2]);
-
 // Print Buffer
 console.log("Buffer Data:", combined);
-
 // Convert to String
 console.log("String:", combined.toString());
-
 // Length
 console.log("Length:", combined.length);
-
 // JSON Format
 console.log("JSON:", combined.toJSON());
 // Compare Buffers
