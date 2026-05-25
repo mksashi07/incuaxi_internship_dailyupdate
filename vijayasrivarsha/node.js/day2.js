@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 //fs
 const fs = require('fs');
@@ -74,7 +73,6 @@ setTimeout(() => {
     console.log('Runs after 2 seconds');
 }, 2000);
 
-=======
 //fs
 const fs = require('fs');
 
@@ -149,5 +147,3 @@ console.log(hash);
 setTimeout(() => {
     console.log('Runs after 2 seconds');
 }, 2000);
-
->>>>>>> 967325cae38b716332ba587c6ace5b7cd1ff667e
