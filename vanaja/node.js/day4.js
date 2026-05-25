@@ -1,49 +1,119 @@
-// NODE.JS STREAMS + EVENTS EXAMPLE
-// IMPORT MODULES
+// IMPORTING MODULES
+// Express package installed using npm
+const express = require("express");
+// Built-in modules
+const path = require("path");
+const os = require("os");
 const fs = require("fs");
-const EventEmitter = require("events");
-// CREATE EVENT EMITTER
-const emitter = new EventEmitter();
-// CREATE CUSTOM EVENTS
-emitter.on("start", () => {
-    console.log("Program Started");
+const events = require("events");
+const http = require("http");
+// EXPRESS APP
+const app = express();
+const PORT = 3000;
+// BASIC ROUTE
+app.get("/", (req, res) => {
+    res.send("Welcome to NPM Learning Project");
 });
-emitter.on("dataRead", () => {
-    console.log("File Reading Completed");
+// PATH MODULE
+app.get("/path", (req, res) => {
+    // Current file name
+    const fileName = path.basename(__filename);
+    // Current directory
+    const dirName = path.dirname(__filename);
+    res.send(`
+        File Name: ${fileName}
+        <br>
+        Directory Name: ${dirName}
+    `);
 });
-emitter.on("end", () => {
-    console.log("Program Finished");
+// OS MODULE
+app.get("/os", (req, res) => {
+    const systemInfo = {
+        platform: os.platform(),
+        architecture: os.arch(),
+        cpuCores: os.cpus().length,
+        freeMemory: os.freemem(),
+        totalMemory: os.totalmem(),
+        homeDirectory: os.homedir()
+    };
+    res.json(systemInfo);
 });
-// EMIT START EVENT
-emitter.emit("start");
-// CREATE WRITE STREAM
-const writeStream = fs.createWriteStream("demo.txt");
-writeStream.write("Hello Vanu\n");
-writeStream.write("Welcome to Node.js Streams\n");
-writeStream.write("Streams are used for reading and writing data\n");
-writeStream.end();
-// WRITE STREAM EVENTS
-writeStream.on("finish", () => {
+// FILE SYSTEM MODULE
+app.get("/create-file", (req, res) => {
 
-    console.log("Data Written Successfully");
+    // Create file
+    fs.writeFileSync(
+        "sample.txt",
+        "This file is created using FS module"
+    );
+    res.send("File Created Successfully");
+});
+// Read File
+app.get("/read-file", (req, res) => {
+    const data = fs.readFileSync(
+        "sample.txt",
+        "utf-8"
+    );
+    res.send(data);
+});
+// Append File
+app.get("/append-file", (req, res) => {
 
+    fs.appendFileSync(
+        "sample.txt",
+        "\nNew Data Added"
+    );
+    res.send("Data Appended");
 });
-writeStream.on("error", (error) => {
+// EVENTS MODULE
+const eventEmitter = new events.EventEmitter();
+// Create Event
+eventEmitter.on("greet", () => {
+    console.log("Hello Event Triggered");
+});
+// Trigger Event
+eventEmitter.emit("greet");
+// HTTP MODULE
+// Create basic HTTP server
+const server = http.createServer((req, res) => {
 
-    console.log("Write Error:", error);
+    if (req.url === "/http") {
 
+        res.write("Hello from HTTP Module");
+
+        res.end();
+    }
 });
-// CREATE READ STREAM
-const readStream = fs.createReadStream("demo.txt", "utf-8");
-// READ STREAM EVENTS
-readStream.on("data", (chunk) => {
-    console.log("Reading Chunk:");
-    console.log(chunk);
+// Run HTTP server
+server.listen(4000, () => {
+    console.log("HTTP Server Running on Port 4000");
 });
-readStream.on("end", () => {
-    emitter.emit("dataRead");
-    emitter.emit("end");
+// SIMPLE API
+app.get("/students", (req, res) => {
+
+    const students = [
+        {
+            id: 1,
+            name: "Vishnu",
+            course: "Data Science"
+        },
+        {
+            id: 2,
+            name: "Mounika",
+            course: "CSE"
+        }
+    ];
+
+    res.json(students);
 });
-readStream.on("error", (error) => {
-    console.log("Read Error:", error);
+// NPM PACKAGE EXAMPLE
+app.get("/express", (req, res) => {
+    res.send("Express Installed Using NPM");
+});
+// START EXPRESS SERVER
+app.listen(PORT, () => {
+
+    console.log(`Express Server Running on:
+http://localhost:${PORT}`);
+
 });
