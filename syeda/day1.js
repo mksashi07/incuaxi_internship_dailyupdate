@@ -1,4 +1,4 @@
-let name = "Suheal";
+let name = "Syeda";
 console.log(name);
 
 let a = 10;
@@ -38,7 +38,7 @@ console.log("Area =", area);
 
 
 // naming example
-let studentName = "Rahul";
+let studentName = "Arshiya";
 let age = 20;
 let course = "BCA";
 
