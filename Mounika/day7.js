@@ -1,5 +1,3 @@
-
-
 //set() and get()
 
 let person = new Map();
@@ -105,12 +103,8 @@ function showTime() {
     console.log(hours + ":" + minutes + ":" + seconds);
 }
 showTime();
-
-// ================================
 // JavaScript Sets Example
 // Student Management System
-// ================================
-
 // 1. Creating a Set
 let students = new Set();
 

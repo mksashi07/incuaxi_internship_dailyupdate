@@ -2,33 +2,45 @@ const fs = require("fs");
 const os = require("os");
 const http = require("http");
 
-//  FS module
+fs.writeFileSync("venky.txt", "Hello Venky\n");
 
-// Create file
-fs.writeFileSync("test.txt", "Hello Node.js");
+fs.appendFileSync("venky.txt", "Welcome to Node.js\n");
 
-// Read file
-const data = fs.readFileSync("test.txt", "utf-8");
-console.log("File Data:", data);
+const data = fs.readFileSync("venky.txt", "utf-8");
 
-// OS module
-console.log("OS Platform:", os.platform());
+console.log("FILE CONTENT ");
+console.log(data);
 
-// custom module
+console.log("OS DETAILS");
+console.log("Platform:", os.platform());
+console.log("Architecture:", os.arch());
+console.log("CPU Cores:", os.cpus().length);
+console.log("User Name:", os.userInfo().username);
+
 function add(a, b) {
     return a + b;
 }
+
 function multiply(a, b) {
     return a * b;
 }
-console.log("Addition:", add(5, 3));
-console.log("Multiplication:", multiply(4, 2));
 
-// HTTP module 
+console.log("VENKY CALCULATIONS ");
+console.log("Addition:", add(15, 5));
+console.log("Multiplication:", multiply(6, 4));
+
 const server = http.createServer((req, res) => {
-    res.write("Node.js Server Running");
+
+    res.writeHead(200, { "Content-Type": "text/html" });
+
+    res.write(`
+        <h1>Welcome Venky</h1>
+        <p>Node.js Server Running Successfully</p>
+    `);
+
     res.end();
 });
+
 server.listen(3000, () => {
-    console.log("Server started on port 3000");
+    console.log("Server running at http://localhost:3000");
 });
