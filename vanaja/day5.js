@@ -155,11 +155,7 @@ class Node {
         this.right = null;    // binary tree
     }
 }
-
-// ------------------------
 // 1. GENERAL TREE
-// ------------------------
-
 const root = new Node("A");
 const b = new Node("B");
 const c = new Node("C");
@@ -169,9 +165,7 @@ const e = new Node("E");
 root.children.push(b, c);
 b.children.push(d, e);
 
-// ------------------------
-// DFS (General Tree)
-// ------------------------
+// DFS (General Tree
 function dfs(node) {
     if (!node) return;
 
@@ -181,10 +175,7 @@ function dfs(node) {
         dfs(child);
     }
 }
-
-// ------------------------
 // BFS (General Tree)
-// ------------------------
 function bfs(root) {
     const queue = [root];
 
@@ -200,10 +191,7 @@ function bfs(root) {
         }
     }
 }
-
-// ------------------------
 // SEARCH (General Tree)
-// ------------------------
 function search(node, target) {
     if (!node) return false;
 
@@ -215,10 +203,7 @@ function search(node, target) {
 
     return false;
 }
-
-// ------------------------
 // HEIGHT (General Tree)
-// ------------------------
 function height(node) {
     if (!node) return 0;
 
@@ -230,10 +215,7 @@ function height(node) {
 
     return max + 1;
 }
-
-// ------------------------
 // BINARY TREE (example)
-// ------------------------
 const root2 = new Node(1);
 root2.left = new Node(2);
 root2.right = new Node(3);
@@ -255,10 +237,6 @@ function bfsBinary(root) {
         if (node.right) queue.push(node.right);
     }
 }
-
-// ------------------------
-// RUN CODE
-// ------------------------
 
 console.log("DFS Traversal:");
 dfs(root);

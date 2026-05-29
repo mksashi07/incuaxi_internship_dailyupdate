@@ -1,3 +1,4 @@
+
 //An object stores data in key-values
 let student = {
     name: "Vaishnavi",
@@ -20,7 +21,28 @@ let student = {
     age: 21
 };
 console.log(student["age"]);
+//An object stores data in key-values
+let student = {
+    name: "Vaishnavi",
+    age: 21,
+    course: "JavaScript"
+};
+console.log(student);
 
+//Accessing Object Properties
+//There are 2 ways:1.Dot notation 
+let student = {
+    name: "Rupa",
+    age: 21
+};
+console.log(student.name);
+
+// 2.Bracket notation
+let student = {
+    name: "Rupa",
+    age: 21
+};
+console.log(student["age"]);
 //Object methods - Functions inside objects are called methods.
 let student = {
     name: "Mounika",
@@ -29,6 +51,42 @@ let student = {
     }
 };
 student.hello();
+//this keyword - this refers to the current object.
+let student = {
+    name: "Puneeth",
+    display: function() {
+        console.log(this.name);
+    }
+};
+student.display();
+
+//Object.keys() - it returns all keys in the object
+let student = {
+    name: "Rupa",
+    age: 27,
+    city: "Adoni"
+};
+console.log(Object.keys(student));
+
+//Object.values - it returns all values of an object
+let student = {
+    name: "Mounika",
+    age: 21,
+    city: "Vijayawada"
+};
+console.log(Object.values(student));
+
+//Object Example
+let student = {
+    name: "Puneeth",
+    marks: 89,
+    department: "cse",
+    details: function() {
+        console.log("Name:", this.name);
+        console.log("Marks:", this.marks);
+        console.log("Department:", this.department);
+    }
+};
 
 //this keyword - this refers to the current object.
 let student = {
@@ -110,4 +168,5 @@ console.log(language.substring(1, 5));
 console.log(name.length);
 console.log(name.toUpperCase());
 console.log(name.trim());
+console.log(name.substring(1, 5));
 console.log(name.substring(1, 5));
