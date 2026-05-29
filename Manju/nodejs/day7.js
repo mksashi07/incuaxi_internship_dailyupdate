@@ -109,7 +109,6 @@ function downloadFile(fileName, callback) {
 
     }, 3000);
 }
-
 downloadFile("nodejs.pdf", () => {
     console.log("Callback Function Executed");
 });
