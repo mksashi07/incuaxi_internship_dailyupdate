@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 const fs = require('fs');
 const { Duplex, Transform } = require('stream');
 
