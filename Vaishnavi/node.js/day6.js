@@ -142,7 +142,6 @@ console.log("\nFile Size :", stats.size);
 console.log("Created At :", stats.birthtime);
 console.log("Last Modified :", stats.mtime);
 
-=======
 // FILE HANDLING
 //FileOutputStream - fs.writeFileSync() is used to create and write data into a file.
 const fs = require("fs");
