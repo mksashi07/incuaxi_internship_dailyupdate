@@ -1,110 +1,128 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>HTML DOM Complete Example</title>
+const mysql = require('mysql2');
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'college'
+});
 
-        #box {
-            width: 100px;
-            height: 100px;
-            background-color: red;
-            position: relative;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
+connection.connect((err) => {
+    if (err) {
+        console.log('Connection Failed');
+        return;
+    }
 
-    <h1 id="heading">JavaScript HTML DOM Demo</h1>
+    console.log('Connected to MySQL Database');
 
-    <p class="demo">First Paragraph</p>
-    <p class="demo">Second Paragraph</p>
+    const insertQuery = `
+        INSERT INTO students(name, age, city, marks)
+        VALUES ('Mounika', 20, 'Anantapur', 90)
+    `;
 
-    <button onclick="changeHTML()">Change HTML</button>
-    <button onclick="changeCSS()">Change CSS</button>
-    <button onclick="selectElements()">Select Elements</button>
-    <button onclick="showDocumentInfo()">Document Reference</button>
-    <button onclick="elementReference()">Element Reference</button>
-    <button onclick="startAnimation()">Start Animation</button>
+    connection.query(insertQuery, (err, result) => {
+        if (err) throw err;
+        console.log('Record Inserted');
+    });
 
-    <h2>Form Validation</h2>
+    const selectQuery = 'SELECT * FROM students';
 
-    <form onsubmit="return validateForm()">
-        Name:
-        <input type="text" id="name">
-        <input type="submit" value="Submit">
-    </form>
+    connection.query(selectQuery, (err, result) => {
+        if (err) throw err;
+        console.log('\nAll Records');
+        console.table(result);
+    });
 
-    <div id="box"></div>
+    const whereQuery =
+        "SELECT * FROM students WHERE marks > 80";
 
-    <script>
+    connection.query(whereQuery, (err, result) => {
+        if (err) throw err;
+        console.log('\nWHERE Clause');
+        console.table(result);
+    });
 
-        function changeHTML() {
-            document.getElementById("heading").innerHTML =
-                "HTML Content Changed Successfully";
-        }
+    const orderQuery =
+        "SELECT * FROM students ORDER BY marks DESC";
 
-        function changeCSS() {
-            let element = document.getElementById("heading");
+    connection.query(orderQuery, (err, result) => {
+        if (err) throw err;
+        console.log('\nORDER BY');
+        console.table(result);
+    });
 
-            element.style.color = "blue";
-            element.style.backgroundColor = "yellow";
-            element.style.fontSize = "40px";
-        }
+    const updateQuery =
+        "UPDATE students SET marks = 95 WHERE id = 1";
 
-        function selectElements() {
-            let items = document.getElementsByClassName("demo");
+    connection.query(updateQuery, (err, result) => {
+        if (err) throw err;
+        console.log('\nRecord Updated');
+    });
 
-            for (let i = 0; i < items.length; i++) {
-                items[i].style.color = "green";
-                items[i].innerHTML = "Selected Using DOM";
-            }
-        }
+    const limitQuery =
+        "SELECT * FROM students LIMIT 2";
 
-        function validateForm() {
-            let name = document.getElementById("name").value;
+    connection.query(limitQuery, (err, result) => {
+        if (err) throw err;
+        console.log('\nLIMIT');
+        console.table(result);
+    });
 
-            if (name === "") {
-                alert("Name cannot be empty");
-                return false;
-            }
+    const deleteQuery =
+        "DELETE FROM students WHERE id = 2";
 
-            alert("Form Submitted Successfully");
-            return true;
-        }
+    connection.query(deleteQuery, (err, result) => {
+        if (err) throw err;
+        console.log('\nRecord Deleted');
+    });
 
-        function startAnimation() {
-            let box = document.getElementById("box");
-            let position = 0;
+    const createCourseTable = `
+        CREATE TABLE IF NOT EXISTS courses(
+            course_id INT PRIMARY KEY,
+            student_id INT,
+            course_name VARCHAR(50)
+        )
+    `;
 
-            let animation = setInterval(frame, 5);
+    connection.query(createCourseTable, (err) => {
+        if (err) throw err;
 
-            function frame() {
-                if (position >= 300) {
-                    clearInterval(animation);
-                } else {
-                    position++;
-                    box.style.left = position + "px";
-                }
-            }
-        }
+        const insertCourse = `
+            INSERT INTO courses
+            VALUES
+            (101,1,'Java'),
+            (102,3,'Python')
+        `;
 
-        function showDocumentInfo() {
-            alert("Document Title: " + document.title);
-        }
+        connection.query(insertCourse, (err) => {
+            if (err) throw err;
 
-        function elementReference() {
-            let element = document.getElementById("heading");
+            const joinQuery = `
+                SELECT students.id,
+                       students.name,
+                       courses.course_name
+                FROM students
+                INNER JOIN courses
+                ON students.id = courses.student_id
+            `;
 
-            alert("Element Content: " + element.innerHTML);
-        }
+            connection.query(joinQuery, (err, result) => {
+                if (err) throw err;
 
-    </script>
+                console.log('\nJOIN Result');
+                console.table(result);
 
-</body>
-</html>
+                const dropQuery =
+                    "DROP TABLE courses";
+
+                connection.query(dropQuery, (err) => {
+                    if (err) throw err;
+
+                    console.log('\nCourses Table Dropped');
+
+                    connection.end();
+                });
+            });
+        });
+    });
+});
