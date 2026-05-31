@@ -1,4 +1,4 @@
-let studentName = "arshiya";
+let studentName = "arshiyagit ";
 let marks1 = 90;
 let marks2 = 78;
 let marks3 = 88;
