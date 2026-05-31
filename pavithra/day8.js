@@ -200,7 +200,7 @@ public class JavaIOStreamsDemo {
     public static void main(String[] args) {
 
         System.out.println(
-                "===== JAVA I/O STREAMS DEMO =====");
+                "JAVA I/O STREAMS DEMO");
 
         // FileOutputStream
         writeUsingFileOutputStream();
@@ -226,6 +226,6 @@ public class JavaIOStreamsDemo {
         // Display final content
         displayFinalContent();
 
-        System.out.println("\n===== PROGRAM COMPLETED =====");
+        System.out.println("\nPROGRAM COMPLETED");
     }
 }
