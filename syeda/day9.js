@@ -1,7 +1,7 @@
 // 1. JavaScript Scope
 console.log("===== JavaScript Scope =====");
 // Global Scope
-let globalVar = "I am Global";
+let globalVar = "I am syeda";
 function globalExample() {
     console.log(globalVar);
 }
