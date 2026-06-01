@@ -1,6 +1,4 @@
-console.log("JavaScript Debugging Demo ");
 //1. DEBUGGING INTRO
-console.log("\n1. DEBUGGING INTRO");
 let a = 10;
 let b = 20;
 let sum = a + b;
