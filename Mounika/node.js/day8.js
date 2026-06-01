@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 const { MongoClient } = require("mongodb");
 
 const url = "mongodb://127.0.0.1:27017";
@@ -300,4 +300,3 @@ async function main() {
         console.log("Connection Closed");
     }
 }
->>>>>>> 515913c7c29f90854bfee2d20de868f8b2422dc4
