@@ -1,83 +1,102 @@
-const express = require("express");
-const app = express();
+// assert + readline 
+const assert = require("assert");
+const readline = require("readline");
 
-app.get("/", (req, res) => {
-    res.send("Home Page");
+// Assert Module Examples
+try {
+    assert.strictEqual(2 + 2, 4);
+    console.log("Assertion 1 Passed");
+
+    assert.notStrictEqual(5, "5");
+    console.log("Assertion 2 Passed");
+
+    assert.deepStrictEqual(
+        { name: "Vanaja", age: 21 },
+        { name: "Vanaja", age: 21 }
+    );
+    console.log("Assertion 3 Passed");
+
+} catch (err) {
+    console.error("Assertion Failed:", err.message);
+}
+
+// Readline Module
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
 });
 
-app.get("/about", (req, res) => {
-    res.send("About Page");
-});
+rl.question("Enter your name: ", (name) => {
 
-app.get("/contact", (req, res) => {
-    res.send("Contact Page");
-});
+    rl.question("Enter your age: ", (age) => {
 
-app.get("/user/:id", (req, res) => {
-    res.send(`User ID: ${req.params.id}`);
-});
+        console.log("\nUser Details");
+        console.log("Name:", name);
+        console.log("Age:", age);
 
-app.get("/search", (req, res) => {
-    res.send(`Search: ${req.query.name}`);
-});
+        try {
+            assert.ok(name.length > 0, "Name cannot be empty");
+            assert.ok(Number(age) > 0, "Age must be greater than 0");
 
-app.use((req, res) => {
-    res.status(404).send("Page Not Found");
-});
+            console.log("\nValidation Successful");
+        } catch (err) {
+            console.log("\nValidation Error:", err.message);
+        }
 
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
-});
-const express = require("express");
-const app = express();
-
-app.use(express.json());
-
-// Logger Middleware
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.url}`);
-    next();
-});
-
-// Authentication Middleware
-const auth = (req, res, next) => {
-    const isLoggedIn = true;
-
-    if (isLoggedIn) {
-        next();
-    } else {
-        res.status(401).json({
-            message: "Unauthorized"
-        });
-    }
-};
-
-// Route
-app.get("/dashboard", auth, (req, res) => {
-    res.json({
-        message: "Welcome to Dashboard"
+        rl.close();
     });
 });
 
-// POST Route
-app.post("/user", (req, res) => {
-    res.json({
-        received: req.body
-    });
+rl.on("close", () => {
+    console.log("\nProgram Ended");
 });
+// URL Module - Complete Example
 
-// Error Route
-app.get("/error", (req, res) => {
-    throw new Error("Custom Error");
-});
+const myUrl = new URL(
+  "https://www.example.com/products/mobile?id=101&name=iPhone&price=50000"
+);
 
-// Error Middleware
-app.use((err, req, res, next) => {
-    res.status(500).json({
-        error: err.message
-    });
-});
+// Complete URL
+console.log("Full URL:", myUrl.href);
 
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
-});
+// Protocol
+console.log("Protocol:", myUrl.protocol);
+
+// Hostname
+console.log("Hostname:", myUrl.hostname);
+
+// Host
+console.log("Host:", myUrl.host);
+
+// Pathname
+console.log("Pathname:", myUrl.pathname);
+
+// Search String
+console.log("Search:", myUrl.search);
+
+// Query Parameters
+console.log("ID:", myUrl.searchParams.get("id"));
+console.log("Name:", myUrl.searchParams.get("name"));
+console.log("Price:", myUrl.searchParams.get("price"));
+
+// Add New Query Parameter
+myUrl.searchParams.append("brand", "Apple");
+
+// Update Existing Parameter
+myUrl.searchParams.set("price", "60000");
+
+// Delete Parameter
+myUrl.searchParams.delete("id");
+
+// Check Parameter Exists
+console.log("Has Name:", myUrl.searchParams.has("name"));
+
+// Loop Through All Parameters
+console.log("\nAll Query Parameters:");
+for (const [key, value] of myUrl.searchParams) {
+    console.log(`${key}: ${value}`);
+}
+
+// Updated URL
+console.log("\nUpdated URL:");
+console.log(myUrl.href);
