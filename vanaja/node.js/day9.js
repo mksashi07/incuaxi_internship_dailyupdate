@@ -1,4 +1,5 @@
 // assert + readline 
+console.log("Node.js Day 9");
 const assert = require("assert");
 const readline = require("readline");
 
