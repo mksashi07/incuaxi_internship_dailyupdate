@@ -1,6 +1,6 @@
 //1. DEBUGGING INTRO
-let a = 10;
-let b = 20;
+let a = 23;
+let b = 29;
 let sum = a + b;
 console.log("A =", a);
 console.log("B =", b);
