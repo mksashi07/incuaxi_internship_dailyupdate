@@ -1,0 +1,85 @@
+// Package.json Information 
+const packageInfo = {
+    name: "my-node-package",
+    version: "1.0.0",
+    description: "Single-file Node.js example",
+    scripts: {
+        start: "node app.js",
+        test: "node app.js test",
+        publish: "node app.js publish"
+    }
+};
+
+const command = process.argv[2];
+
+//  Package Information 
+function showPackageInfo() {
+    console.log("\n=== PACKAGE.JSON INFORMATION ===");
+    console.log(JSON.stringify(packageInfo, null, 2));
+}
+
+// NPM Scripts
+function showScripts() {
+    console.log("\n=== NPM SCRIPTS ===");
+    console.log("npm start");
+    console.log("npm test");
+    console.log("npm run publish");
+}
+
+//  Manage Dependencies 
+function manageDependencies() {
+    console.log("\n=== MANAGE DEPENDENCIES ===");
+    console.log("npm install <package-name>");
+    console.log("npm install <package-name> --save-dev");
+    console.log("npm uninstall <package-name>");
+}
+
+// Test Script 
+function runTest() {
+    console.log("\n=== TEST ===");
+
+    const numbers = [1, 2, 3, 4, 5];
+    const sum = numbers.reduce((a, b) => a + b, 0);
+
+    console.log("Sum =", sum);
+
+    if (sum === 15) {
+        console.log("Test Passed");
+    } else {
+        console.log("Test Failed");
+    }
+}
+
+// Publish Package 
+function publishPackage() {
+    console.log("\n=== PUBLISH PACKAGE ===");
+    console.log("1. npm login");
+    console.log("2. npm version patch");
+    console.log("3. npm publish");
+}
+
+// Main Program 
+switch (command) {
+    case "test":
+        runTest();
+        break;
+
+    case "deps":
+        manageDependencies();
+        break;
+
+    case "publish":
+        publishPackage();
+        break;
+
+    default:
+        console.log("=== NODE.JS PACKAGE DEMO ===");
+        showPackageInfo();
+        showScripts();
+
+        console.log("\nCommands:");
+        console.log("node app.js");
+        console.log("node app.js test");
+        console.log("node app.js deps");
+        console.log("node app.js publish");
+}

@@ -90,5 +90,3 @@ async function main() {
         console.log("Connection Closed");
     }
 }
-
-main();
