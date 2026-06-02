@@ -1,0 +1,15 @@
+body{
+    margin: 0;
+}
+
+#myBox{
+    Background-color: lightblue;
+    width: 200px;
+    height: 200px;
+    font-size: 7.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+}
