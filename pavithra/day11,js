@@ -1,0 +1,149 @@
+// JAVASCRIPT ADVANCED TOPICS
+// Modules, Meta Programming,
+// Typed Arrays, DOM Navigation
+// MODULE EXAMPLE
+const MathModule = {
+    add(a, b) {
+        return a + b;
+    },
+    subtract(a, b) {
+        return a - b;
+    },
+    multiply(a, b) {
+        return a * b;
+    },
+    divide(a, b) {
+        return a / b;
+    }
+};
+console.log("MODULES");
+console.log(MathModule.add(10, 20));
+console.log(MathModule.subtract(30, 5));
+console.log(MathModule.multiply(5, 4));
+console.log(MathModule.divide(20, 2));
+//META PROGRAMMING
+console.log("\nMETA PROGRAMMING");
+const employee = {
+    id: 101,
+    name: "Pavithra",
+    department: "IT"
+};
+const proxyHandler = {
+    get(target, property) {
+        console.log(`Getting Property: ${property}`);
+        return Reflect.get(target, property);
+    },
+    set(target, property, value) {
+        console.log(`Setting ${property} = ${value}`);
+        return Reflect.set(target, property, value);
+    }
+};
+const employeeProxy =
+new Proxy(employee, proxyHandler);
+console.log(employeeProxy.name);
+employeeProxy.department = "Development";
+console.log(employeeProxy.department);
+// TYPED ARRAYS
+console.log("\nTYPED ARRAYS");
+const buffer = new ArrayBuffer(16);
+const numbers =
+new Int16Array(buffer);
+numbers[0] = 100;
+numbers[1] = 200;
+numbers[2] = 300;
+numbers[3] = 400;
+numbers[4] = 500;
+for(let i = 0; i < numbers.length; i++) {
+    console.log(
+        `Index ${i}: ${numbers[i]}`
+    );
+}
+// DOM NAVIGATION
+console.log("\nDOM NAVIGATION");
+// HTML Required:
+// <div id="container">
+//     <h1>Main Heading</h1>
+//     <p>Paragraph One</p>
+//     <p>Paragraph Two</p>
+// </div>
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+        const container =
+        document.getElementById(
+            "container"
+        );
+        console.log(
+            "First Child:"
+        );
+        console.log(
+            container.firstElementChild
+        );
+        console.log(
+            "Last Child:"
+        );
+        console.log(
+            container.lastElementChild
+        );
+        console.log(
+            "Children Collection:"
+        );
+        console.log(
+            container.children
+        );
+        const firstChild =
+        container.firstElementChild;
+        console.log(
+            "Parent Element:"
+        );
+        console.log(
+            firstChild.parentElement
+        );
+        console.log(
+            "Next Sibling:"
+        );
+        console.log(
+            firstChild.nextElementSibling
+        );
+        console.log(
+            "Previous Sibling:"
+        );
+        console.log(
+            firstChild.previousElementSibling
+        );
+    }
+);
+// COMBINED EXAMPLE
+console.log(
+    "\nCOMBINED EXAMPLE"
+);
+const scoresBuffer =
+new ArrayBuffer(10);
+const scores =
+new Uint8Array(scoresBuffer);
+scores[0] = 80;
+scores[1] = 85;
+scores[2] = 90;
+scores[3] = 95;
+const student = {
+    name: "Pavithra",
+    scores: scores
+};
+const studentProxy =
+new Proxy(student, {
+    get(target, property) {
+        console.log(
+            `Reading ${property}`
+        );
+        return target[property];
+    }
+});
+console.log(
+    studentProxy.name
+);
+console.log(
+    studentProxy.scores
+);
+console.log(
+    "Program Completed"
+);
