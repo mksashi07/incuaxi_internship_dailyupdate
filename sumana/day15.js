@@ -1,236 +1,189 @@
-//1.Typing Speed Counter
-const text = document.getElementById("text");
-const result = document.getElementById("result");
+/*---------------------------------------
+1. VARIABLES
+---------------------------------------*/
+let name = "Sumana";
+const country = "India";
+var age = 22;
 
-let start;
+console.log(name, country, age);
 
-text.addEventListener("input", () => {
-  if (!start) start = Date.now();
+/*---------------------------------------
+2. DATA TYPES
+---------------------------------------*/
+let str = "JavaScript";
+let num = 100;
+let isActive = true;
+let data = null;
+let value;
+let person = { id: 1 };
+let colors = ["Red", "Blue"];
 
-  const words = text.value.trim().split(/\s+/).length;
-  const minutes = (Date.now() - start) / 60000;
+console.log(typeof str);
+console.log(typeof num);
+console.log(typeof isActive);
+console.log(typeof value);
 
-  result.textContent = `WPM: ${Math.round(words / minutes)}`;
-});
-//2. Lucky Number Generator
-const btn = document.getElementById("btn");
-const result = document.getElementById("result");
+/*---------------------------------------
+3. OPERATORS
+---------------------------------------*/
+let a = 10;
+let b = 5;
 
-btn.onclick = () => {
-  result.textContent = Math.floor(Math.random() * 100) + 1;
-};
-//3. Click Counter Challenge
-let count = 0;
+console.log(a + b);
+console.log(a - b);
+console.log(a * b);
+console.log(a / b);
+console.log(a % b);
+console.log(a > b);
+console.log(a === b);
 
-document.getElementById("btn").onclick = () => {
-  count++;
-  document.getElementById("score").textContent = count;
+/*---------------------------------------
+4. TEMPLATE LITERALS
+---------------------------------------*/
+console.log(`Hello ${name}, Welcome to ${country}`);
 
-  setTimeout(() => {
-    alert(`Your score: ${count}`);
-    count = 0;
-  }, 5000);
-};
-//4. Mouse Position Tracker
-document.addEventListener("mousemove", e => {
-  document.getElementById("pos").textContent =
-    `X: ${e.clientX}, Y: ${e.clientY}`;
-});
-//5. Random Emoji Generator
-const emojis = ["😀", "😂", "😎", "🤖", "🔥", "🚀"];
+/*---------------------------------------
+5. CONDITIONAL STATEMENTS
+---------------------------------------*/
+let marks = 75;
 
-document.getElementById("btn").onclick = () => {
-  const random = emojis[Math.floor(Math.random() * emojis.length)];
-  document.getElementById("emoji").textContent = random;
-};
-//  6. Name Initials Generator
-function getInitials(name) {
-  return name
-    .split(" ")
-    .map(word => word[0].toUpperCase())
-    .join("");
+if (marks >= 90) {
+    console.log("Grade A");
+} else if (marks >= 60) {
+    console.log("Grade B");
+} else {
+    console.log("Grade C");
 }
 
-console.log(getInitials("sumana angajala")); // SA
-//7. Coin Toss Simulator
-document.getElementById("btn").onclick = () => {
-  const toss = Math.random() < 0.5 ? "Heads" : "Tails";
-  document.getElementById("result").textContent = toss;
-};
-//8. Love Percentage Generator (Fun)
-document.getElementById("btn").onclick = () => {
-  const percent = Math.floor(Math.random() * 101);
-  document.getElementById("result").textContent =
-    `Love: ${percent}%`;
-};
+/*---------------------------------------
+6. SWITCH
+---------------------------------------*/
+let day = 2;
 
-//9. Countdown Timer
-let time = 10;
+switch (day) {
+    case 1:
+        console.log("Monday");
+        break;
+    case 2:
+        console.log("Tuesday");
+        break;
+    default:
+        console.log("Other Day");
+}
 
-const timer = setInterval(() => {
-  document.getElementById("timer").textContent = time;
-  time--;
-    if (time < 0) {
-    clearInterval(timer);
-    document.getElementById("timer").textContent = "Time's up!";
-  } 
-}, 1000);
-//10. Random Color Generator
-document.getElementById("btn").onclick = () => {
-  const color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;        
-    document.body.style.backgroundColor = color;
-    document.getElementById("color").textContent = color;
-};
-//11. Password Strength Checker
-document.getElementById("password").oninput = () => {
-  const password = document.getElementById("password").value;
-  let strength = "Weak";
-    if (password.length >= 8) strength = "Medium";
-    if (password.length >= 12) strength = "Strong";
-    document.getElementById("strength").textContent = strength;
-};
-//12. Simple User Registration and Login System
-const express = require("express");
-const bcrypt = require("bcrypt");
-const app = express();
-app.use(express.json());
+/*---------------------------------------
+7. LOOPS
+---------------------------------------*/
 
-const users = [];                   
-/*
-   USER REGISTRATION
- */
-app.post(
-    "/register",
-    async (req, res) => {           
-        try {
-            const {
-                name,
-                email,
-                password,
-                role
-            } = req.body;
+// For Loop
+for (let i = 1; i <= 3; i++) {
+    console.log("For:", i);
+}
 
-            const existingUser 
-                = users.find(
-                    user =>
-                        user.email === email
-                );      
-            if (existingUser) {
-                return res.status(400).json({
-                    message:
-                        "User Already Exists"
-                });
-            }
-            const hashedPassword =
-                await bcrypt.hash(
-                    password,
-                    10
-                );  
-            const user = {
-                id: Date.now(),
-                name,
-                email,
-                password: hashedPassword,
-                role: role || "user"
-            };
-            users.push(user);
-            res.status(201).json({
-                message:
-                    "Registration Successful"
-            });
-        } catch (error) {
-            res.status(500).json({
-                message:
-                    error.message
-            });
-        }
+// While Loop
+let count = 1;
+while (count <= 3) {
+    console.log("While:", count);
+    count++;
+}
 
-// USER LOGIN
-app.post(
-    "/login",
-    async (req, res) => {
-        try {
-            const {
-                email,
-                password
-            } = req.body;
+/*---------------------------------------
+8. FUNCTIONS
+---------------------------------------*/
+function add(x, y) {
+    return x + y;
+}
 
-            const user = users.find(
-                u => u.email === email
-            );
-            if (!user) {
-                return res.status(400).json({
-                    message:
-                        "Invalid Credentials"
-                });
-            }
+console.log(add(10, 20));
 
-            const isMatch = await bcrypt.compare(
-                password,
-                user.password
-            );
-            if (!isMatch) {
-                return res.status(400).json({
-                    message:
-                        "Invalid Credentials"
-                });
-            }
+/*---------------------------------------
+9. ARROW FUNCTION
+---------------------------------------*/
+const multiply = (x, y) => x * y;
 
-            res.status(200).json({
-                message:
-                    "Login Successful"
-            });
-        } catch (error) {
-            res.status(500).json({
-                message:
-                    error.message
-            });
-        }
+console.log(multiply(5, 4));
+
+/*---------------------------------------
+10. ARRAY METHODS
+---------------------------------------*/
+const nums = [1, 2, 3, 4, 5];
+
+nums.forEach(n => console.log("forEach:", n));
+
+const doubled = nums.map(n => n * 2);
+console.log(doubled);
+
+const even = nums.filter(n => n % 2 === 0);
+console.log(even);
+
+const total = nums.reduce((acc, cur) => acc + cur, 0);
+console.log(total);
+
+/*---------------------------------------
+11. OBJECTS
+---------------------------------------*/
+const student = {
+    id: 1,
+    name: "John",
+    course: "JavaScript",
+
+    display() {
+        console.log(this.name);
     }
-);
-/*
-   USER REGISTRATION
- */
-app.post(
-    "/register",
-    async (req, res) => {
-        try {
-            const {
-                name,       
-                email,
-                password,
-                role
-            } = req.body;
-            const existingUser = users.find(
-                user =>
-                    user.email === email            
-            );
-            if (existingUser) {
-                return res.status(400).json({   
-                    message:
-                        "User Already Exists"
-                });
-            }   
-            const hashedPassword =
-                await bcrypt.hash(
-                    password,
-                    10  
-                );
-            const user = {
-                id: Date.now(),
-                name,   
-                email,
-                password: hashedPassword,
-                role: role || "user"
-            };
-            users.push(user);
-            res.status(201).json({      
-                message:
-                    "Registration Successful"
-            });
-        } catch (error) {
-            res.status(500).json({
-                message:    
-                    error.message
-            });
-        }   
+};
+
+student.display();
+
+/*---------------------------------------
+12. DESTRUCTURING
+---------------------------------------*/
+const { id, course } = student;
+console.log(id, course);
+
+/*---------------------------------------
+13. SPREAD OPERATOR
+---------------------------------------*/
+const arr1 = [1, 2];
+const arr2 = [3, 4];
+
+const merged = [...arr1, ...arr2];
+console.log(merged);
+
+/*---------------------------------------
+14. REST PARAMETER
+---------------------------------------*/
+function sum(...numbers) {
+    return numbers.reduce((a, b) => a + b, 0);
+}
+
+console.log(sum(1, 2, 3, 4, 5));
+
+/*---------------------------------------
+15. STRING METHODS
+---------------------------------------*/
+let text = "JavaScript Revision";
+
+console.log(text.length);
+console.log(text.toUpperCase());
+console.log(text.includes("Java"));
+
+/*---------------------------------------
+16. DATE
+---------------------------------------*/
+const today = new Date();
+
+console.log(today);
+console.log(today.getFullYear());
+
+// 17. JSON
+const user = {
+    name: "Alex",
+    age: 25
+};
+
+const jsonData = JSON.stringify(user);
+console.log(jsonData);
+
+const parsed = JSON.parse(jsonData);
+console.log(parsed);
+
