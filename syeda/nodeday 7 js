@@ -1,0 +1,21 @@
+
+const assert = require("assert");
+const util = require("util");
+const readline = require("readline");
+// Assert Module
+assert.strictEqual(10, 10);
+console.log("Assert: Test Passed");
+// Util Module
+const person = { name: "Syeda", role: "Student" };
+console.log("Util Inspect:", util.inspect(person));
+
+// Readline Module 
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question("Enter your name: ", (name) => {
+  console.log(`Hello, ${name}!`);
+  rl.close();
+});
