@@ -2,16 +2,14 @@
 const assert = require("assert");
 const util = require("util");
 const readline = require("readline");
-
-//Assert Module
+// Assert Module
 assert.strictEqual(10, 10);
 console.log("Assert: Test Passed");
-
 // Util Module
 const person = { name: "Syeda", role: "Student" };
 console.log("Util Inspect:", util.inspect(person));
 
-//  Readline Module
+// Readline Module 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
