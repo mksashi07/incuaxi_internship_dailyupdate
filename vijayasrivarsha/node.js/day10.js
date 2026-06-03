@@ -1,6 +1,4 @@
-// ================================
 // Node Process Demo
-// ================================
 
 // Class
 class Employee {
@@ -27,9 +25,9 @@ const multiply = (a, b) => {
     return a * b;
 };
 
-console.log("================================");
+console.log("......");
 console.log("NODE PROCESS DEMO");
-console.log("================================");
+console.log("......");
 
 // Process Information
 console.log("\nProcess ID:", process.pid);
