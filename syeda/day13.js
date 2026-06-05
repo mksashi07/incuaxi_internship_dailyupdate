@@ -1,4 +1,3 @@
-
 const text = "Hello JavaScript! My phone number is 9876543210 and email is test@example.com.";
 // 1. Test if a pattern exists
 const hasJavaScript = /JavaScript/.test(text);
