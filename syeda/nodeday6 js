@@ -1,0 +1,22 @@
+const os = require('os');
+const EventEmitter = require('events');
+
+// OS Module
+console.log("Platform:", os.platform());
+console.log("Architecture:", os.arch());
+console.log("CPU Cores:", os.cpus().length);
+console.log("Free Memory:", os.freemem());
+
+// URL Module
+const myUrl = new URL('https://example.com/users?id=101&name=John');
+console.log("Host:", myUrl.hostname);
+console.log("Path:", myUrl.pathname);
+console.log("ID:", myUrl.searchParams.get('id'));
+console.log("Name:", myUrl.searchParams.get('name'));
+
+// Events Module
+const event = new EventEmitter();
+event.on('welcome', () => {
+    console.log("Welcome Event Triggered!");
+});
+event.emit('welcome');
