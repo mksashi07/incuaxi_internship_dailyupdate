@@ -24,3 +24,4 @@ let total = employees.reduce((sum, emp) => {
 console.log(highSalary);
 console.log(bonusSalary);
 console.log(total);
+
