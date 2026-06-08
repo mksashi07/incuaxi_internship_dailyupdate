@@ -1,4 +1,4 @@
-console.log("===== JavaScript apply() Method Complete Program =====\n");
+
 
 const employee1 = {
     id: 101,
