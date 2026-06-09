@@ -8,7 +8,7 @@ app.use(express.json());
 let students = [
     {
         id: 1,
-        name: "Yogesh",
+        name: "manju",
         course: "Node.js"
     },
     {
