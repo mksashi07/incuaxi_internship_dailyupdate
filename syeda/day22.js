@@ -1,0 +1,214 @@
+// 1. AJAX Response
+const xhr = new XMLHttpRequest();
+xhr.onload = function () {
+    if (xhr.status === 200) {
+        console.log("Response:");
+        console.log(xhr.responseText);
+    }
+};
+xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/1");
+xhr.send();
+// 2. AJAX XML File
+const xmlRequest = new XMLHttpRequest();
+
+xmlRequest.onload = function () {
+    const xmlDoc = this.responseXML;
+
+    if (xmlDoc) {
+        console.log(
+            xmlDoc.getElementsByTagName("title")[0].textContent
+        );
+    }
+};
+
+xmlRequest.open("GET", "books.xml");
+xmlRequest.send();
+
+
+// Example books.xml
+/*
+<books>
+    <book>
+        <title>JavaScript Guide</title>
+    </book>
+</books>
+*/
+// 3. AJAX PHP
+
+// JavaScript
+function loadPHPData() {
+    const xhr = new XMLHttpRequest();
+
+    xhr.onload = function () {
+        console.log(this.responseText);
+    };
+
+    xhr.open("GET", "server.php");
+    xhr.send();
+}
+
+// PHP (server.php)
+/*
+<?php
+echo "Data from PHP Server";
+?>
+*/
+// 4. AJAX ASP
+
+// JavaScript
+function loadASPData() {
+    const xhr = new XMLHttpRequest();
+
+    xhr.onload = function () {
+        console.log(this.responseText);
+    };
+
+    xhr.open("GET", "server.asp");
+    xhr.send();
+}
+
+// ASP (server.asp)
+/*
+<%
+Response.Write("Data from ASP Server")
+%>
+*/
+// 5. AJAX Databa
+
+// JavaScript
+function getUsers() {
+    const xhr = new XMLHttpRequest();
+
+    xhr.onload = function () {
+        console.log(JSON.parse(this.responseText));
+    };
+
+    xhr.open("GET", "users.php");
+    xhr.send();
+}
+
+// PHP + MySQL Example
+/*
+<?php
+$conn = new mysqli("localhost","root","","test");
+
+$result = $conn->query("SELECT * FROM users");
+
+while($row = $result->fetch_assoc()){
+    echo json_encode($row);
+}
+?>
+*/
+// 6. AJAX Application Example
+
+function searchUser(id) {
+    fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .then(res => res.json())
+        .then(data => console.log(data));
+}
+
+searchUser(1);
+// 7. AJAX Example
+
+fetch("https://jsonplaceholder.typicode.com/todos/1")
+    .then(response => response.json())
+    .then(data => console.log(data));
+// 8. JS JSON
+
+const student = {
+    name: "Syeda",
+    age: 22
+};
+
+const jsonData = JSON.stringify(student);
+console.log(jsonData);
+
+const obj = JSON.parse(jsonData);
+console.log(obj.name);
+// 9. JS jQuery
+
+// HTML:
+// <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+$(document).ready(function () {
+
+    $("#btn").click(function () {
+        $("#demo").text("Hello jQuery");
+    });
+
+    $("#box").hide();
+    $("#box").show();
+
+});
+
+// 10. JS Graphics (Canvas)
+
+// HTML:
+// <canvas id="myCanvas" width="300" height="200"></canvas>
+
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+// Rectangle
+ctx.fillRect(20, 20, 100, 50);
+
+// Circle
+ctx.beginPath();
+ctx.arc(150, 75, 40, 0, 2 * Math.PI);
+ctx.stroke();
+
+// Text
+ctx.font = "20px Arial";
+ctx.fillText("JavaScript", 80, 180);
+// 11. JS Examples
+
+// Array Example
+const nums = [1, 2, 3, 4];
+
+const doubled = nums.map(n => n * 2);
+console.log(doubled);
+
+// Function Example
+function greet(name) {
+    return `Hello ${name}`;
+}
+
+console.log(greet("Syeda"));
+
+// Class Example
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+
+    display() {
+        console.log(this.name);
+    }
+}
+
+new Person("Arshiya").display();
+// 12. JS Reference Examples
+
+// String
+console.log("JavaScript".length);
+
+// Array
+console.log([1, 2, 3].includes(2));
+
+// Math
+console.log(Math.sqrt(25));
+
+// Date
+console.log(new Date().getFullYear());
+
+// Object
+console.log(Object.keys(student));
+
+// Set
+const set = new Set([1, 2, 3]);
+console.log(set);
+
+// Map
+const map = new Map();
+map.set("name", "Syeda");
+console.log(map.get("name"));
