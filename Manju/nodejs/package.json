@@ -1,0 +1,17 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "main": "day1.js",
+  "scripts": {
+    "start": "day12.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.2.1",
+    "fs": "^0.0.1-security",
+    "url": "^0.11.4"
+  }
+}
