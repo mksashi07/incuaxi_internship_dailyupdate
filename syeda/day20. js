@@ -1,0 +1,138 @@
+// ---------- 1. JS Typed Arrays ----------
+
+const numbers = new Int32Array([10, 20, 30, 40, 50]);
+
+console.log("Typed Array:");
+console.log(numbers);
+console.log(numbers[0]);
+console.log(numbers.length);
+
+
+// ---------- 2. JS DOM Navigation ----------
+
+// HTML:
+// <div id="parent">
+//     <p id="child">Hello JavaScript</p>
+// </div>
+
+const parent = document.getElementById("parent");
+
+console.log(parent.firstElementChild);
+console.log(parent.lastElementChild);
+console.log(parent.children);
+
+const child = document.getElementById("child");
+
+console.log(child.parentElement);
+console.log(child.nextElementSibling);
+console.log(child.previousElementSibling);
+
+
+// ---------- 3. JS Window Object ----------
+
+console.log(window.innerWidth);
+console.log(window.innerHeight);
+
+function showAlert() {
+    alert("Welcome to JavaScript!");
+}
+
+// showAlert();
+
+function openNewWindow() {
+    window.open("https://www.google.com");
+}
+
+// openNewWindow();
+
+
+// ---------- 4. JS Web API - Geolocation ----------
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        console.log("Geolocation not supported");
+    }
+}
+
+function showPosition(position) {
+    console.log("Latitude:", position.coords.latitude);
+    console.log("Longitude:", position.coords.longitude);
+}
+
+// getLocation();
+
+
+// ---------- 5. JS Web API - Fetch API ----------
+
+    .then(response => response.json())
+    .then(data => {
+        console.log("User Data:", data);
+    })
+    .catch(error => {
+        console.log("Error:", error);
+    });
+
+
+// ---------- 6. JS Web API - Local Storage ----------
+
+localStorage.setItem("name", "Syeda");
+
+const storedName = localStorage.getItem("name");
+console.log("Stored Name:", storedName);
+
+localStorage.removeItem("name");
+
+
+// ---------- 7. JS Web API - Timer API ----------
+
+setTimeout(() => {
+    console.log("Executed after 2 seconds");
+}, 2000);
+
+let count = 0;
+
+const interval = setInterval(() => {
+    count++;
+    console.log("Counter:", count);
+
+    if (count === 5) {
+        clearInterval(interval);
+    }
+}, 1000);
+
+
+// ---------- 8. JS Web API - Clipboard API ----------
+
+async function copyText() {
+    await navigator.clipboard.writeText("Hello JavaScript");
+    console.log("Text Copied");
+}
+
+// copyText();
+
+
+// ---------- 9. JS Web API - Notification API ----------
+
+function showNotification() {
+    if (Notification.permission === "granted") {
+        new Notification("Welcome!");
+    } else {
+        Notification.requestPermission().then(permission => {
+            if (permission === "granted") {
+                new Notification("Welcome!");
+            }
+        });
+    }
+}
+
+// showNotification();
+
+
+// ---------- 10. JS Web API - History API ----------
+
+console.log(history.length);
+
+// history.back();
+// history.forward();
