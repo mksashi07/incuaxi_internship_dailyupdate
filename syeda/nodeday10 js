@@ -1,0 +1,89 @@
+/*
+package.json
+{
+  "name": "node-npm-demo",
+  "version": "1.0.0",
+  "description": "NPM Scripts, Dependencies, Publishing Example",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js",
+    "test": "echo \"Testing Application\"",
+    "build": "echo \"Building Project\""
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
+NPM Commands
+
+# Initialize project
+npm init -y
+
+# Install dependency
+npm install lodash
+
+# Install dev dependency
+npm install nodemon --save-dev
+
+# Remove dependency
+npm uninstall lodash
+
+# View installed packages
+npm list
+
+# Update packages
+npm update
+
+# Run scripts
+npm start
+npm run dev
+npm run test
+npm run build
+
+# Login to npm
+npm login
+
+# Publish package
+npm publish
+*/
+
+const packageInfo = {
+  name: "node-npm-demo",
+  version: "1.0.0",
+  description: "NPM Example"
+};
+
+console.log("Package Name:", packageInfo.name);
+console.log("Version:", packageInfo.version);
+
+// NPM Script Example
+function startApp() {
+  console.log("Application Started");
+}
+
+function buildApp() {
+  console.log("Project Build Completed");
+}
+
+function testApp() {
+  console.log("Testing Completed");
+}
+
+// Dependency Management Example
+const dependencies = [
+  "lodash",
+  "express",
+  "nodemon"
+];
+
+console.log("Installed Dependencies:");
+dependencies.forEach(dep => console.log("-", dep));
+
+// Package Publishing Example
+function publishPackage() {
+  console.log("Step 1: npm login");
+  console.log("Step 2: npm version patch");
+  console.log("Step 3: npm publish");
+  console.log("Package Published Successfully");
+}
