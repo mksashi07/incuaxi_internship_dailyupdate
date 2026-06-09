@@ -1,0 +1,17 @@
+{
+  "name": "incuaxi_internship_dailyupdate",
+  "version": "1.0.0",
+  "main": "day1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.2.1",
+    "fs": "^0.0.1-security",
+    "url": "^0.11.4"
+  }
+}
