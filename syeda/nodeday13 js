@@ -1,0 +1,88 @@
+// let & const
+const appName = "Node Demo";
+let version = 1;
+
+console.log(appName, version);
+
+// Arrow Function
+const add = (a, b) => a + b;
+console.log("Add:", add(10, 20));
+
+// Template Literal
+console.log(`Application: ${appName}`);
+
+// Destructuring
+const user = { name: "Syeda", age: 22 };
+const { name, age } = user;
+console.log(name, age);
+
+// Spread Operator
+const arr1 = [1, 2];
+const arr2 = [...arr1, 3, 4];
+console.log(arr2);
+
+// =====================================
+// Node ES6+
+// =====================================
+
+class Employee {
+  constructor(name, role) {
+    this.name = name;
+    this.role = role;
+  }
+
+  display() {
+    console.log(`${this.name} - ${this.role}`);
+  }
+}
+
+const emp = new Employee("Syeda", "Developer");
+emp.display();
+
+// =====================================
+// Node Process
+// =====================================
+
+console.log("Process ID:", process.pid);
+console.log("Node Version:", process.version);
+console.log("Current Directory:", process.cwd());
+console.log("Platform:", process.platform);
+
+// TypeScript Equivalent:
+// let username: string = "Syeda";
+
+let username = "Syeda";
+console.log(username);
+
+// TypeScript Interface Equivalent
+const student = {
+  id: 101,
+  name: "Arshiya"
+};
+
+console.log(student);
+// Advanced TypeScript Concepts
+
+// Generic Equivalent Example
+function identity(value) {
+  return value;
+}
+
+console.log(identity("Hello"));
+console.log(identity(100));
+
+// Enum Equivalent
+const Role = {
+  ADMIN: "ADMIN",
+  USER: "USER"
+};
+
+console.log(Role.ADMIN);
+// Lint & Formatting Information
+console.log("ESLint Command:");
+console.log("npx eslint app.js");
+
+console.log("Prettier Command:");
+console.log("npx prettier app.js --write");
+// End
+console.log("JS & TS Features Example Completed");
