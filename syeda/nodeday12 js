@@ -1,0 +1,57 @@
+// Core Modules Import
+const BufferModule = require("buffer").Buffer;
+const crypto = require("crypto");
+const timers = require("timers");
+const dns = require("dns");
+const assert = require("assert");
+const util = require("util");
+const readline = require("readline");
+// Buffer Module
+const buffer = BufferModule.from("Hello Node.js");
+console.log("Buffer:", buffer);
+console.log("Buffer to String:", buffer.toString());
+// Crypto Module
+const hash = crypto
+  .createHash("sha256")
+  .update("password123")
+  .digest("hex");
+
+console.log("SHA256 Hash:", hash);
+// Timers Module
+timers.setTimeout(() => {
+  console.log("setTimeout Executed");
+}, 1000);
+
+const interval = timers.setInterval(() => {
+  console.log("setInterval Executed");
+  clearInterval(interval);
+}, 2000);
+// DNS Module
+dns.lookup("google.com", (err, address) => {
+  if (!err) {
+    console.log("Google IP Address:", address);
+  }
+});
+// Assert Module
+assert.strictEqual(10, 10);
+console.log("Assertion Passed");
+// Util Module
+const user = {
+  name: "Syeda",
+  role: "Developer"
+};
+
+console.log("Inspect Object:");
+console.log(util.inspect(user));
+// Readline Module
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question("Enter Your Name: ", (name) => {
+  console.log(`Welcome ${name}`);
+  rl.close();
+});
+// End Message
+console.log("Node.js Core Modules Example Loaded");
