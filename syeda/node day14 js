@@ -1,0 +1,82 @@
+// Install Package:
+// npm install mysql
+
+const mysql = require("mysql");
+// 1. MySQL Connection
+
+
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: ""
+});
+
+connection.connect((err) => {
+    if (err) throw err;
+    console.log("Connected to MySQL");
+});
+// 2. Create Database
+
+connection.query(
+    "CREATE DATABASE IF NOT EXISTS companydb",
+    (err, result) => {
+        if (err) throw err;
+        console.log("Database Created");
+    }
+);
+// 3. Use Database
+
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "companydb"
+});
+
+db.connect((err) => {
+    if (err) throw err;
+    console.log("Connected to companydb");
+});
+// 4. Create Table
+
+const createTable = `
+CREATE TABLE IF NOT EXISTS employees (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    salary DECIMAL(10,2)
+)`;
+
+db.query(createTable, (err, result) => {
+    if (err) throw err;
+    console.log("Table Created");
+});
+
+// 5. Insert Into Table
+
+const insertData = `
+INSERT INTO employees (name, email, salary)
+VALUES ('Syeda', 'syeda@gmail.com', 50000)
+`;
+
+db.query(insertData, (err, result) => {
+    if (err) throw err;
+    console.log("1 Record Inserted");
+});
+
+// 6. Select From Table
+
+
+db.query("SELECT * FROM employees", (err, result) => {
+    if (err) throw err;
+
+    console.log("Employee Records:");
+    console.table(result);
+});
+
+// 7. Close Connection
+
+db.end(() => {
+    console.log("Connection Closed");
+});
+
