@@ -1,0 +1,146 @@
+/// 1. MySQL JOIN
+const mysql = require("mysql");
+
+const mysqlDB = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "companydb"
+});
+
+mysqlDB.connect((err) => {
+    if (err) throw err;
+    console.log("MySQL Connected");
+});
+
+const joinQuery = `
+SELECT
+    employees.id,
+    employees.name,
+    employees.salary,
+    departments.department_name
+FROM employees
+INNER JOIN departments
+ON employees.department_id = departments.id
+`;
+
+mysqlDB.query(joinQuery, (err, result) => {
+    if (err) throw err;
+
+    console.log("\nMySQL JOIN Result");
+    console.table(result);
+});
+// 2. MongoDB Get Started
+// Install:
+// npm install mongodb
+
+const { MongoClient } = require("mongodb");
+
+const url = "mongodb://127.0.0.1:27017";
+
+const client = new MongoClient(url);
+
+async function runMongoDB() {
+
+    try {
+
+        await client.connect();
+        console.log("\nMongoDB Connected");
+        // 3. MongoDB Create Database
+
+        const db = client.db("companydb");
+
+        console.log("Database Created/Selected");
+        // 4. MongoDB Collection
+
+        const employees = db.collection("employees");
+
+        console.log("Collection Ready");
+        // 5. MongoDB Insert One
+
+        await employees.insertOne({
+            name: "Syeda",
+            email: "syeda@gmail.com",
+            salary: 50000
+        });
+
+        console.log("One Document Inserted");
+        // 6. MongoDB Insert Man
+
+        await employees.insertMany([
+            {
+                name: "Arshiya",
+                salary: 60000
+            },
+            {
+                name: "John",
+                salary: 70000
+            }
+        ]);
+
+        console.log("Multiple Documents Inserted");
+        // 7. MongoDB Find All
+        const allEmployees =
+            await employees.find({}).toArray();
+
+        console.log("\nAll Employees");
+        console.table(allEmployees)
+        // 8. MongoDB Find One
+
+        const employee =
+            await employees.findOne({
+                name: "Syeda"
+            });
+
+        console.log("\nFind One");
+        console.log(employee);
+        // 9. MongoDB Query
+
+        const result =
+            await employees.find({
+                salary: { $gt: 55000 }
+            }).toArray();
+
+        console.log("\nSalary > 55000");
+        console.table(result);
+        // More MongoDB Queries
+        // Equal
+        await employees.find({
+            name: "John"
+        }).toArray();
+
+        // Greater Than
+        await employees.find({
+            salary: { $gt: 50000 }
+        }).toArray();
+
+        // Less Than
+        await employees.find({
+            salary: { $lt: 70000 }
+        }).toArray();
+
+        // AND Condition
+        await employees.find({
+            salary: { $gt: 50000 },
+            name: "John"
+        }).toArray();
+
+        // OR Condition
+        await employees.find({
+            $or: [
+                { name: "John" },
+                { salary: 50000 }
+            ]
+        }).toArray();
+
+        console.log("\nMongoDB Queries Executed");
+
+    } catch (err) {
+        console.log(err);
+    } finally {
+        await client.close();
+        console.log("\nMongoDB Connection Closed");
+    }
+}
+
+runMongoDB();
