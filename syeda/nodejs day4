@@ -1,0 +1,164 @@
+
+// ES MODULE IMPORTS
+import multiply, {
+    add,
+    subtract
+} from "./math.js";
+import user, {
+    age
+} from "./user.js";
+// NODE BUILT-IN MODULES
+import fs from "fs/promises";
+import path from "path";
+import os from "os";
+import EventEmitter from "events";
+import http from "http";
+// NPM PACKAGE
+import express from "express";
+// CUSTOM MODULES
+// donsole.log("User:", user);
+console.log("Age:", age);
+console.log(
+    "Add:",
+    add(10, 20)
+);
+console.log(
+    "Subtract:",
+    subtract(20, 5)
+);
+console.log(
+    "Multiply:",
+    multiply(5, 5)
+);
+// PATH MODULE
+console.log(
+    "Current Folder:",
+    process.cwd()
+);
+
+console.log(
+    "Joined Path:",
+    path.join(
+        "users",
+        "admin",
+        "profile"
+    )
+);
+// OS MODULE
+console.log(
+    "Platform:",
+    os.platform()
+);
+console.log(
+    "CPU Count:",
+    os.cpus().length
+);
+console.log(
+    "Free Memory:",
+    os.freemem()
+);
+// FILE SYSTEM MODULE
+await fs.writeFile(
+    "data.txt",
+    "Hello Node Modules"
+);
+const file =
+    await fs.readFile(
+        "data.txt",
+        "utf8"
+    );
+console.log(
+    "File Content:",
+    file
+);
+// EVENT EMITTER
+const emitter =
+    new EventEmitter();
+
+emitter.on(
+    "login",
+    username => {
+        console.log(
+            `${username} logged in`
+        );
+    }
+);
+emitter.emit(
+    "login",
+    "John"
+);
+// HTTP SERVER
+const server =
+    http.createServer(
+        (req, res) => {
+            res.writeHead(
+                200,
+                {
+                    "Content-Type":
+                        "text/plain"
+                }
+            );
+
+            res.end(
+                "Node HTTP Server"
+            );
+        }
+    );
+
+server.listen(
+    5000,
+    () => {
+        console.log(
+            "HTTP Server Running"
+        );
+    }
+)
+// EXPRESS SERVER
+const app = express();
+
+app.get(
+    "/",
+    (req, res) => {
+        res.json({
+            success: true,
+            message:
+                "Express Working"
+        });
+    }
+);
+
+app.get(
+    "/users",
+    (req, res) => {
+        res.json([
+            {
+                id: 1,
+                name: "John"
+            },
+            {
+                id: 2,
+                name: "David"
+            }
+        ]);
+    }
+);
+
+app.listen(
+    3000,
+    () => {
+        console.log(
+            "Express Running"
+        );
+    }
+);
+
+// DYNAMIC IMPORT
+const mathModule =
+    await import(
+        "./math.js"
+    );
+
+console.log(
+    "Dynamic Import:",
+    mathModule.add(100, 200)
+);

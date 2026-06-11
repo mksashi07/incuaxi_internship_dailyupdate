@@ -106,7 +106,7 @@ console.log(topStudents);
 //object
 
 let student={
-    name:"varsha";
+    name:`varsha`,
     age:20
 };
 console.log(student.name);

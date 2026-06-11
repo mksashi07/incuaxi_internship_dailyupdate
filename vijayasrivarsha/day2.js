@@ -48,17 +48,10 @@ console.log(message);
  //boolean
  let student=true;
  console.log(student,typeof student);
-
-
-
  //operations
-
-
- //arithmetic operations
-
+ //arithmetic operation
  let a = 10;
 let b = 5;
-
 console.log(a + b); 
 console.log(a - b); 
 console.log(a * b); 

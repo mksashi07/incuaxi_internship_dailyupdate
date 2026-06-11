@@ -1,74 +1,50 @@
-function Pavithra() {
-    console.log("Hello pavithra");
+//Simple function
+
+function greet() {
+  console.log("my name is mounika");
 }
-Mounika();
-//parameters
-function sub(a, b) {
-    return a - b;
-}
-console.log(sub(10, 5));
-//return value
-function square(num) {
-    return num * num;
-}
-let result = square(4);
-console.log(result);
-//normal function
-function display() {
-    console.log("Normal Function");
-}
-display();
-//arrow function
-const multiply = (a, b) => {
+
+greet();
+
+//Function with return value
+
+function multiply(a, b) {
     return a * b;
+}
+let result = multiply(5, 4);
+console.log(result);
+
+//Function with parameters
+
+function greet(name) {
+  console.log("Hello " + name);
+}
+
+greet("Mounika");
+
+//Arrow function
+
+const multiply = (a, b) => {
+  return a * b;
 };
-console.log(multiply(3, 4));
-//nested if
-let years = 20;
-let hasLicense = true;
-if(years >= 18) {
-    if(hasLicense) {
-        console.log("Eligible to drive");
-    }
+
+console.log(multiply(5, 4));
+
+//Callback Function
+
+function greet(name, callback) {
+  console.log("Hello " + name);
+  callback();
 }
-//nested if with else
-let username = "admin";
-let password = "1234";
-if(username === "admin") {
-    if(password === "1234") {
-        console.log("Login Successful");
-    } else {
-        console.log("Wrong Password");
-    }
-} else {
-    console.log("Invalid Username");
+
+function done() {
+  console.log("Task Completed");
 }
-//student marks
-let marks = 82;
-if(marks >= 35) {
-    if(marks >= 75) {
-        console.log("Distinction");
-    } else {
-        console.log("Pass");
-    }
-} else {
-    console.log("Fail");
-}
-//functions using nested if
-function checkLogin(username, password) {
-    if(username === "pavi") {
-        if(password === "12345") {
-            console.log("Login Success");
-        } else {
-            console.log("Incorrect Password");
-        }
-    } else {
-        console.log("Username Not Found");
-    }
-}
-checkLogin("pavi", "12345");
+
+greet("John", done);
 
 //Student details Function
+
 function studentDetails(name, age, course, marks) {
 
     console.log("Student Information");
@@ -94,8 +70,45 @@ function studentDetails(name, age, course, marks) {
     else {
         console.log("Grade : Fail");
     }
+
+    console.log("-------------------");
     console.log("Result Generated");
     console.log("Thank You");
-}
-studentDetails("pavithra", 20, "CSE - C", 89);
 
+}
+
+studentDetails("mounika", 20, "CSE - C", 89);
+let username = "mounika";
+let password = "12345";
+let otp = 6789;
+
+if (username === "mounika") {
+
+    console.log("Username is correct");
+
+    if (password === "12345") {
+
+        console.log("Password is correct");
+
+        if (otp === 6789) {
+
+            console.log("OTP verified");
+            console.log("Login successful");
+
+        } else {
+
+            console.log("Invalid OTP");
+
+        }
+
+    } else {
+
+        console.log("Wrong password");
+
+    }
+
+} else {
+
+    console.log("Invalid username");
+
+}
