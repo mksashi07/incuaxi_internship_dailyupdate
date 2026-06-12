@@ -1,0 +1,93 @@
+// Install:
+// npm install mongodb
+
+const { MongoClient } = require("mongodb");
+
+const url = "mongodb://127.0.0.1:27017";
+const client = new MongoClient(url);
+
+async function mongoOperations() {
+    try {
+        await client.connect();
+
+        console.log("MongoDB Connected");
+
+        const db = client.db("companydb");
+
+        const employees = db.collection("employees");
+        const departments = db.collection("departments");
+        // 1. MongoDB SORT
+        const sortedEmployees = await employees
+            .find({})
+            .sort({ salary: -1 }) // Descending
+            .toArray();
+
+        console.log("\nSORT BY SALARY DESC");
+        console.table(sortedEmployees);
+        // 2. MongoDB UPDATE ONE
+        await employees.updateOne(
+            { name: "Syeda" },
+            { $set: { salary: 60000 } }
+        );
+
+        console.log("\nOne Document Updated");
+        // 3. MongoDB UPDATE MANY
+        await employees.updateMany(
+            {},
+            { $set: { status: "Active" } }
+        );
+
+        console.log("Multiple Documents Updated");
+        // 4. MongoDB DELETE ONE
+        await employees.deleteOne({
+            name: "John"
+        });
+
+        console.log("\nOne Document Deleted");
+        // 5. MongoDB DELETE MAN
+        await employees.deleteMany({
+            status: "Inactive"
+        });
+
+        console.log("Multiple Documents Deleted");
+        // 6. MongoDB LIMIT
+
+        const limitedData = await employees
+            .find({})
+            .limit(3)
+            .toArray();
+
+        console.log("\nLIMIT 3 DOCUMENTS");
+        console.table(limitedData);
+        // 7. MongoDB JOIN ($lookup)
+
+        const joinedData = await employees
+            .aggregate([
+                {
+                    $lookup: {
+                        from: "departments",
+                        localField: "departmentId",
+                        foreignField: "_id",
+                        as: "departmentInfo"
+                    }
+                }
+            ])
+            .toArray();
+
+        console.log("\nJOIN USING $lookup");
+        console.table(joinedData);
+        // 8. MongoDB DROP COLLECTION
+        // Uncomment to Drop Collection
+
+        // await db.collection("tempCollection").drop();
+        // console.log("Collection Dropped");
+
+    } catch (error) {
+        console.log(error);
+    } finally {
+        await client.close();
+        console.log("\nMongoDB Connection Closed");
+    }
+}
+
+mongoOperations();
