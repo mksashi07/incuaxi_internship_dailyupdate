@@ -1,0 +1,68 @@
+// Core Modules Import
+const http = require("http");
+const https = require("https");
+const fs = require("fs");
+const path = require("path");
+const os = require("os");
+const url = require("url");
+const EventEmitter = require("events");
+const { Readable } = require("stream");
+// HTTP Module
+const httpServer = http.createServer((req, res) => {
+  res.write("Hello from HTTP Server");
+  res.end();
+});
+
+// httpServer.listen(3000);
+// HTTPS Modulu
+https.get("https://jsonplaceholder.typicode.com/posts/1", (res) => {
+  let data = "";
+
+  res.on("data", (chunk) => {
+    data += chunk;
+  });
+
+  res.on("end", () => {
+    console.log("HTTPS Response Received");
+  });
+});
+// File System (fs) Module
+fs.writeFileSync("sample.txt", "Hello Node.js");
+
+const fileData = fs.readFileSync("sample.txt", "utf8");
+console.log("File Content:", fileData);
+// Path Module
+const filePath = path.join("users", "documents", "file.txt");
+console.log("Path:", filePath);
+console.log("File Extension:", path.extname("index.js"));
+// OS Module
+console.log("Platform:", os.platform());
+console.log("CPU Cores:", os.cpus().length);
+console.log("Home Directory:", os.homedir());
+// URL Module
+const myURL = new URL(
+  "https://example.com/products?id=101&name=laptop"
+);
+console.log("Host:", myURL.host);
+console.log("Pathname:", myURL.pathname);
+console.log("Product ID:", myURL.searchParams.get("id"));
+// Events Module
+const emitter = new EventEmitter();
+emitter.on("greet", (name) => {
+  console.log(`Hello ${name}`);
+});
+
+emitter.emit("greet", "Syeda");
+// Stream Module
+const readableStream = new Readable({
+  read() {}
+});
+
+readableStream.push("Stream Data Example");
+readableStream.push(null);
+
+readableStream.on("data", (chunk) => {
+  console.log("Stream:", chunk.toString());
+});
+// Output Message
+console.log("All Core Modules Executed Successfully!");

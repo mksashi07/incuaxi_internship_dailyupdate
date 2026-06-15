@@ -1,0 +1,125 @@
+// Node.js + MySQL
+const mysql = require("mysql");
+
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "companydb"
+});
+
+db.connect((err) => {
+    if (err) throw err;
+    console.log("Connected to MySQL");
+});
+// 1. MySQL ORDER BY
+
+db.query(
+    "SELECT * FROM employees ORDER BY salary DESC",
+    (err, result) => {
+        if (err) throw err;
+        console.log("\nORDER BY Salary DESC");
+        console.table(result);
+    }
+);
+// 2. MySQL UPDATE
+
+db.query(
+    "UPDATE employees SET salary = 60000 WHERE id = 1",
+    (err, result) => {
+        if (err) throw err;
+        console.log("\nRecord Updated");
+    }
+);
+// 3. MySQL DELETE
+
+db.query(
+    "DELETE FROM employees WHERE id = 2",
+    (err, result) => {
+        if (err) throw err;
+        console.log("\nRecord Deleted");
+    }
+);
+// 4. MySQL LIMIT
+
+db.query(
+    "SELECT * FROM employees LIMIT 3",
+    (err, result) => {
+        if (err) throw err;
+        console.log("\nLIMIT 3 Records");
+        console.table(result);
+    }
+);
+// 5. MySQL JOIN
+
+// Create Department Table
+const departmentTable = `
+CREATE TABLE IF NOT EXISTS departments(
+    dept_id INT AUTO_INCREMENT PRIMARY KEY,
+    dept_name VARCHAR(100)
+)`;
+
+db.query(departmentTable);
+
+// Example JOIN Query
+const joinQuery = `
+SELECT employees.id,
+       employees.name,
+       employees.salary,
+       departments.dept_name
+FROM employees
+INNER JOIN departments
+ON employees.id = departments.dept_id
+`;
+
+db.query(joinQuery, (err, result) => {
+    if (err) throw err;
+    console.log("\nINNER JOIN Result");
+    console.table(result);
+});
+// 6. MySQL DROP TABLE
+db.query(
+    "DROP TABLE IF EXISTS temp_table",
+    (err, result) => {
+        if (err) throw err;
+        console.log("\nTable Dropped");
+    }
+);
+
+// Close Connection
+
+db.end(() => {
+    console.log("\nConnection Closed");
+});
+// SQL Reference
+
+/*
+
+-- ORDER BY
+SELECT * FROM employees
+ORDER BY salary DESC;
+
+-- UPDATE
+UPDATE employees
+SET salary = 60000
+WHERE id = 1;
+
+-- DELETE
+DELETE FROM employees
+WHERE id = 2;
+
+-- LIMIT
+SELECT * FROM employees
+LIMIT 3;
+
+-- JOIN
+SELECT employees.name,
+       departments.dept_name
+FROM employees
+INNER JOIN departments
+ON employees.id = departments.dept_id;
+
+-- DROP TABLE
+DROP TABLE employees;
+
+*/
